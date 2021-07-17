@@ -1,0 +1,7 @@
+{
+  "name": "MediShop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

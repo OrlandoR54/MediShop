@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "MediShop",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
