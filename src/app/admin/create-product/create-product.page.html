@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="content">
+
+      <ion-item>
+        <ion-label position="floating">Nombre del producto</ion-label>
+        <ion-input autocorrect="on" placeholder="Proteina" [(ngModel)]="producto.displayName" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descripcion</ion-label>
+        <ion-textarea placeholder="Ingrese la descripción del producto..." [(ngModel)]="producto.description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Precio unitario</ion-label>
+        <ion-input inputmode="decimal" minlength= 1 placeholder="3.89" [(ngModel)]="producto.price" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cantidad en stock</ion-label>
+        <ion-input type="number" inputmode="number" placeholder="20" [(ngModel)]="producto.stock" required></ion-input>
+      </ion-item>
+      <div class="file has-name is-boxed">
+          <ion-item>
+            <ion-label position="floating">Cargar imagen</ion-label>
+            <br>
+            <ion-input 
+            accept=".png, .jpg" 
+            class="file-input" 
+            type="file" 
+            name="inputFile" 
+            (change)="onUpload($event)">
+          </ion-input>
+          </ion-item>
+      </div>
+      <ion-input #imageProduct type="hidden" [value]="urlImage | async" [(ngModel)]="producto.image"></ion-input>
+
+
+    <!-- Boton de registro -->
+    <div class="content-btn">
+      <ion-button *ngIf="urlImage | async; else btnDisabled" shape="round" fill="outline" (click)= "addProduct()">Agregar Producto</ion-button>
+    </div>
+    <ng-template #btnDisabled>
+      <ion-button shape="round" disabled= true fill="outline" (click)= "addProduct()" >Agregar Producto</ion-button>
+    </ng-template>
+
+  </div>
+
+</ion-content>

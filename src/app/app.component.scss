@@ -117,3 +117,60 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+
+
+// Estilo para la cabecera del menu
+.menu-header-bg {
+  height: 180px;
+  width: 350px;
+  background: #75DFD5;
+  background: linear-gradient(90deg, #75DFD5 0%, #4DDFD5 100%);
+  box-shadow: 0px 1px 10px rgba(36, 240, 213, 0.5);
+  transform: rotate(-15deg);
+  border-radius: 10px 10px 10px 50px;
+  margin-left: -18px;
+  margin-top: -60px;
+  margin-bottom: 60px;
+}
+
+.header-content {
+  position: absolute;
+  top: 30px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 60%;
+      border: 7px solid #5DECCC;
+      margin-right: 14px;
+    }
+
+    h2 {
+      font-weight: 300;
+      color: #fff;
+    }
+
+    p {
+      font-size: 12px;
+      color: #e4e4e4;
+      font-weight: 100;
+      letter-spacing: 0.4px;
+    }
+}
+
+////////// FIN ///////////
+ion-button {
+  --background: #00C4CC;
+  --color: black;
+}
+
+.content-btn {
+  display: block;
+  height: 3em;
+  margin: 3em 3em;
+  padding: auto;
+}

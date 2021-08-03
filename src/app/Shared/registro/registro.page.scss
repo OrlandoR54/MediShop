@@ -1,0 +1,47 @@
+ion-button {
+    --background: #00C4CC;
+    --color: black;
+}
+
+
+ion-title {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+// Botones
+
+.content-btn {
+    display: block;
+    height: 5em;
+    margin: 6em auto;
+    padding: auto;
+}
+
+.content-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.content-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-back {
+    outline: none;
+    border-bottom: 2px solid #00C4CC;
+    font-size: 13px;
+    text-decoration-style: solid;
+    background-color: white;
+}
+
+.content-signup {
+    display: block;
+    width: 20em;
+    margin: 10px auto;
+    padding: auto;
+}

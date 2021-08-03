@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>show-repartidor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- List Header with Button -->
+    <ion-list-header>
+      <ion-label>Repartidores</ion-label>
+      <ion-button>See All</ion-button>
+    </ion-list-header>
+
+    <div *ngFor="let repartidor of repartidores | async">
+      <ion-item (click)= editar(repartidor)>
+        <ion-avatar slot="start">
+          <img src="./avatar-finn.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{repartidor.codigo}} {{repartidor.displayName}}</h2>
+          <h3>{{repartidor.phoneNumber}}</h3>
+          <p>{{repartidor.address}}</p>
+        </ion-label>
+      </ion-item>
+    </div>
+      
+    
+  </ion-list>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>crear-repartidor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="content-signup">
+    
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="repartidor.displayName"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="repartidor.lastname"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input type="email" [(ngModel)]="repartidor.email"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="repartidor.password"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Celular</ion-label>
+        <ion-input type="number" [(ngModel)]="repartidor.numberPhone"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Direccion</ion-label>
+        <ion-input type="text" [(ngModel)]="repartidor.address"></ion-input>
+      </ion-item>
+
+  </div>
+   
+  
+  <!--
+    <app-take-photo source="gallery" (imageSelected)="imageSeleccionada($event)"
+      (uploadFinished)="uploadFinished($event)"></app-take-photo>
+    <app-take-photo source="photo" (imageSelected)="imageSeleccionada($event)" (uploadFinished)="uploadFinished($event)">
+    </app-take-photo>
+  -->
+  <div class="btn-content">
+    <div class="content-2">
+      <ion-item>
+        <ion-button class="btn-signup" strong ="true" shape="round" (click)="guardar()">Guardar</ion-button>
+      </ion-item>
+    </div>  
+    <!--<div class="content-2">
+      <button (click)= "back()" class="btn-back">Ya tengo una cuenta</button>
+    </div>
+  -->
+  </div>
+
+</ion-content>

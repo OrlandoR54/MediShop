@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>map</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom] = "zoom" (centerChange)= "newAddress($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icons.shop"></agm-marker>
+
+    <agm-marker [latitude]="centerLocation.latitude" [longitude]="centerLocation.longitude" [iconUrl]="icons.pointer"></agm-marker>
+  </agm-map>
+
+  {{centerLocation | json}}
+
+</ion-content>

@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary-contrast">
+    <ion-title>Registro </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>Ingrese sus datos</h3>
+
+ 
+<div class="content-signup">
+  <form [formGroup]="registerForm">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="name" [(ngModel)]="user.displayName"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of ValidationMessage.name">
+        <div *ngIf="registerForm.get('name').hasError(validation.type) &&
+        (registerForm.get('name').dirty ||
+        registerForm.get('name').touched )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" formControlName="lastname" [(ngModel)]="user.lastname"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of ValidationMessage.name">
+        <div *ngIf="registerForm.get('name').hasError(validation.type) &&
+        (registerForm.get('name').dirty ||
+        registerForm.get('name').touched )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" formControlName="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of ValidationMessage.email">
+        <div *ngIf="registerForm.get('email').hasError(validation.type) &&
+        (registerForm.get('email').dirty ||
+        registerForm.get('email').touched )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of ValidationMessage.password">
+        <div *ngIf="
+          registerForm.get('password').hasError(validation.type) &&
+          (registerForm.get('password').dirty ||
+        registerForm.get('password').touched )">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Celular</ion-label>
+      <ion-input type="number" formControlName="number" [(ngModel)]="user.numberPhone"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of ValidationMessage.number">
+        <div *ngIf="registerForm.get('number').hasError(validation.type) &&
+        (registerForm.get('number').dirty ||
+        registerForm.get('number').touched )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Direccion</ion-label>
+      <ion-input type="text" formControlName="direccion" [(ngModel)]="user.address"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of ValidationMessage.direccion">
+        <div *ngIf="registerForm.get('direccion').hasError(validation.type) &&
+        (registerForm.get('direccion').dirty ||
+        registerForm.get('direccion').touched )">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+ </form>
+
+  <ion-item>
+    <ion-label position="floating">Acepta Terminos y Condiciones</ion-label>
+    <ion-checkbox color="primary" [(ngModel)]="terms"></ion-checkbox>
+  </ion-item>
+</div>
+ 
+
+
+<!--
+  <app-take-photo source="gallery" (imageSelected)="imageSeleccionada($event)"
+    (uploadFinished)="uploadFinished($event)"></app-take-photo>
+  <app-take-photo source="photo" (imageSelected)="imageSeleccionada($event)" (uploadFinished)="uploadFinished($event)">
+  </app-take-photo>
+-->
+<div class="btn-content">
+  <div class="content-2">
+    <ion-item>
+      <ion-button class="btn-signup" [disabled]="!terms" strong ="true" shape="round" (click)="guardar()">Registrar</ion-button>
+    </ion-item>
+  </div>  
+  <div class="content-2">
+    <button (click)= "back()" class="btn-back">Ya tengo una cuenta</button>
+  </div>
+</div>
+
+</ion-content>
