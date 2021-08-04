@@ -4,6 +4,7 @@ export class Product {
     description: String;
     price: number;
     stock: number;
+    category: string;
     deleted?: boolean;
     image?: any;
 }

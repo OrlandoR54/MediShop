@@ -19,9 +19,9 @@ import { Observable } from 'rxjs';
 export class AppComponent {
 
   public appPages = [
-    { title: 'Inicio', url: '/folder/Inbox', icon: 'home' },
+    { title: 'Inicio', url: '/user-main', icon: 'home' },
     { title: 'Mis Direcciones', url: '/folder/Outbox', icon: 'location' },
-    { title: 'Mi Cuenta', url: '/folder/Archived', icon: 'person' },
+    { title: 'Mi Cuenta', url: '/user-update', icon: 'person' },
     { title: 'Mis Pedidos', url: '/folder/Trash', icon: 'book' },
   ];
 

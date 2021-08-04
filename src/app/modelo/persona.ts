@@ -8,5 +8,5 @@ export class Persona {
     address?: string;
     numberPhone?: string;
     deleted?: boolean;
-    image?: any;
+    photoURL?: any;
 }

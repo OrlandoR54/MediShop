@@ -33,7 +33,7 @@ import { FormsModule } from '@angular/forms'
     AngularFireStorageModule,
     AngularFireAuthModule,
     //CommonModule,
-    //FormsModule,
+    FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms'
     })
           ],
   providers: [
-    //FormBuilder,
+    FormBuilder,
     //GooglePlus
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

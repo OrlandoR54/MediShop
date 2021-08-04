@@ -1,0 +1,40 @@
+.btn-icon{
+    display: block;
+    text-align: left;
+    float: left;
+}
+
+.content-title{
+    display: block;
+    text-align: left;
+    float: left;
+}
+
+ion-icon{
+    height: 65px;
+    width: 45px;
+}
+
+ion-title{
+    height: 65px;
+    width: 100%;
+    font-size: xx-large;
+}
+
+ion-button {
+    --background: #00C4CC;
+    --color: black;
+}
+
+.content-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-signup {
+    display: block;
+    width: 20em;
+    margin: 10px auto;
+    padding: auto;
+}

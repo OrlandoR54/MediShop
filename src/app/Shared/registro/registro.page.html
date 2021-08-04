@@ -5,11 +5,10 @@
 </ion-header>
 
 <ion-content>
-  <h3>Ingrese sus datos</h3>
-
- 
+  
 <div class="content-signup">
   <form [formGroup]="registerForm">
+   <!-- 
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input type="text" formControlName="name" [(ngModel)]="user.displayName"></ion-input>
@@ -37,7 +36,7 @@
         </div>
       </ng-container>
     </div>
-
+    -->
     <ion-item>
       <ion-label position="floating">Correo</ion-label>
       <ion-input type="email" formControlName="email" [(ngModel)]="user.email"></ion-input>
@@ -66,7 +65,7 @@
         </div>
       </ng-container>
     </div>
-
+    <!--
     <ion-item>
       <ion-label position="floating">Celular</ion-label>
       <ion-input type="number" formControlName="number" [(ngModel)]="user.numberPhone"></ion-input>
@@ -94,31 +93,33 @@
         </div>
       </ng-container>
     </div>
+    -->
  </form>
 
   <ion-item>
     <ion-label position="floating">Acepta Terminos y Condiciones</ion-label>
     <ion-checkbox color="primary" [(ngModel)]="terms"></ion-checkbox>
   </ion-item>
-</div>
- 
 
 
-<!--
+  <!--
   <app-take-photo source="gallery" (imageSelected)="imageSeleccionada($event)"
     (uploadFinished)="uploadFinished($event)"></app-take-photo>
   <app-take-photo source="photo" (imageSelected)="imageSeleccionada($event)" (uploadFinished)="uploadFinished($event)">
   </app-take-photo>
 -->
 <div class="btn-content">
-  <div class="content-2">
-    <ion-item>
-      <ion-button class="btn-signup" [disabled]="!terms" strong ="true" shape="round" (click)="guardar()">Registrar</ion-button>
-    </ion-item>
+  <div class="content-1">
+    <ion-button class="btn-signup" [disabled]="!terms" strong ="true" shape="round" (click)="guardar()">Registrar</ion-button>
   </div>  
   <div class="content-2">
     <button (click)= "back()" class="btn-back">Ya tengo una cuenta</button>
   </div>
 </div>
+
+</div>
+ 
+
+
 
 </ion-content>

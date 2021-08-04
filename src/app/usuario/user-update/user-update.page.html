@@ -1,9 +1,71 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user-update</ion-title>
+    <div class="btn-icon" (click)="back()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </div>
+    <div class="content-title">
+      <ion-title>Mi cuenta</ion-title>
+    </div>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <h3>Ingrese sus datos</h3>
+
+ 
+<div class="content-signup">
+  
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="persona.displayName"></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="persona.lastname"></ion-input>
+    </ion-item>
+   
+
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="persona.email"></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="persona.password"></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Celular</ion-label>
+      <ion-input type="number" [(ngModel)]="persona.numberPhone"></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Direccion</ion-label>
+      <ion-input type="text" [(ngModel)]="persona.address"></ion-input>
+    </ion-item>
+    
+</div>
+ 
+
+
+<!--
+  <app-take-photo source="gallery" (imageSelected)="imageSeleccionada($event)"
+    (uploadFinished)="uploadFinished($event)"></app-take-photo>
+  <app-take-photo source="photo" (imageSelected)="imageSeleccionada($event)" (uploadFinished)="uploadFinished($event)">
+  </app-take-photo>
+-->
+<div class="btn-content">
+  <div class="content-2">
+      <ion-button class="btn-signup" strong ="true" shape="round" (click)="guardar()">Actualizar</ion-button>
+  </div>  
+</div>
 
 </ion-content>
+

@@ -52,6 +52,14 @@ const routes: Routes = [
   {
     path: 'map',
     loadChildren: () => import('./usuario/map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'carrito',
+    loadChildren: () => import('./usuario/carrito/carrito.module').then( m => m.CarritoPageModule)
+  },
+  {
+    path: 'user-product',
+    loadChildren: () => import('./usuario/user-product/user-product.module').then( m => m.UserProductPageModule)
   }
 ];
 

@@ -46,17 +46,17 @@ export class AuthService {
  
   // Register With Email & Password
 
-  async onRegister(name: string, email: string, password: string): Promise<any>{
-    console.log("Registro Email&Password -> Nombre: " + name, "Email: ", email)
+  async onRegister(email: string, password: string): Promise<any>{
+    console.log("Registro Email&Password -> Nombre: ", "Email: ", email)
     try {
       console.log("Auth service - email", email, "Contrasena: ", password);
       this.afAuth.createUserWithEmailAndPassword(email, password);
       await this.sendVerificationEmail();
-      const user = await this.afAuth.currentUser;
+      /*const user = await this.afAuth.currentUser;
       return await user.updateProfile({
         displayName: name,
         photoURL: "../assets/imagenes/User.png"
-      });
+      });*/
     } catch (error) {
       console.log('Error on register user: ', error);
     }
@@ -153,6 +153,7 @@ export class AuthService {
       displayName: user.displayName || '',
       photoURL: user.photoURL || "../assets/imagenes/User.png",
       provider: provider,
+      rol: "usuario",
       lastLogin: new Date(Number(user.lastLoginAt)) || new Date(),
       createdAt: new Date(Number(user.createdAt)) || new Date()
     };
@@ -166,6 +167,7 @@ export class AuthService {
       displayName: user.displayName || '',
       photoURL: user.photoURL || "../assets/imagenes/User.png",
       provider: provider,
+      rol: "usuario",
       lastLogin: new Date(Number(user.lastLoginAt)) || new Date()
     };
   }

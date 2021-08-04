@@ -122,7 +122,7 @@ export class RegistroPage implements OnInit {
   
   async guardar() {
     console.log("Entro guardar");
-    this.contactService
+    /*this.contactService
       .getContactoCorreo(this.user.email)
       .then(async (data) => {
         const aux: any = data;
@@ -139,8 +139,9 @@ export class RegistroPage implements OnInit {
           });
           (await toast).present();
         }
-      });
-      await this.authService.onRegister(this.user.displayName, this.user.email, this.user.password); // registra al usuario por email y contrasena
+      });*/
+      await this.authService.onRegister(this.user.email, this.user.password); // registra al usuario por email y contrasena
+      
       this.router.navigate(["iniciar-sesion"]);
   }
 

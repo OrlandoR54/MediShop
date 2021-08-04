@@ -33,7 +33,7 @@
     {{ (afAuth.user | async)?.uid | json }}
     {{ (afAuth.credential | async)?.additionalUserInfo.isNewUser | json }}
     <img class="btn-google" src="../assets/imagenes/btn_google_signin_light_pressed_web@2x.png" (click)="onLoginGoogle()" *ngIf="showLoginButton">
-    <ion-button (click)="logout()" *ngIf="showLogoutButton">Log out</ion-button>
+    <!--<ion-button (click)="logout()" *ngIf="showLogoutButton">Log out</ion-button>-->
   </div>
 
 </ion-content>

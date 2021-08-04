@@ -100,10 +100,72 @@ export class IniciarSesionPage implements OnInit {
 
     const login = await this.authService.onLogin(this.user.email, this.user.password); // Inicia al usuario con Email & Password
 
+    this.getDataEmailPass().subscribe(async (dato) => {
+
+      usuarios = dato; // Guarda el resultado obtenido de dato en el array usuarios
+
+      console.log("Vector Usuario: ", usuarios[0].photoURL);
+
+      if (usuarios.length == 1) { // Verifica si existe un usuario
+        console.log("El usuario si existe");
+
+          if (usuarios[0].rol === "repartidor") { // Condicional si es repartidor
+            const toast = this.toastController.create({
+              message: `Bienvenido: ${usuarios[0].displayName}`,
+              duration: 2000,
+            });
+            (await toast).present();
+            ////
+            let person: Persona = persona[0];
+            delete person.password;
+            //.set("persona", persona[0]);
+            /////
+            this.router.navigate(["/menu-teacher/home"]);
+
+          } else if (usuarios[0].rol === "usuario") { // Condicional si es usuario
+
+            const toast = this.toastController.create({
+              message: `Bienvenido  ${usuarios[0].displayName}`,
+              duration: 2000,
+            });
+            (await toast).present();
+            ////
+            let person: Persona =usuarios[0];
+            delete person.password;
+            //this.storage.set("persona", persona[0]);
+            
+             /** Se manda parametros a otra pagina  **/
+            let params: NavigationExtras = {
+              queryParams:{
+                people: usuarios[0],
+                /*nombre: persona[0].displayName,
+                apellido: persona[0].lastname,
+                email: persona[0].email,
+                imagen: usuarios[0].photoURL*/
+              }
+            }
+            this.router.navigate(["user-main"], params); // Redirige a la pagina user-main y pasa parametros
+
+            
+            
+          }else if (usuarios[0].rol === "admin") {
+            console.log("Entra ADMIN")
+            this.router.navigate(["admin-main"]); // Redirige a la pagina user-main y pasa parametros
+          }
+        } else {
+        const toast = this.toastController.create({
+          message: "Credenciales incorrectas",
+          duration: 2000,
+        });
+        (await toast).present();
+      }
+     
+
+    });
     /** Verifica la tabla Usuarios 
      *  Se comprueba si el usuario tiene credenciales y si esta activo
      */
-    this.verificarDatos().subscribe(async (data) => {
+   /* this.verificarDatos().subscribe(async (data) => {
 
       persona = data; // Guarda el resultado obtenido de data en el array persona
 
@@ -145,24 +207,7 @@ export class IniciarSesionPage implements OnInit {
             
             // Verifica la tabala USER
 
-            this.getDataEmailPass().subscribe(async (dato) => {
-
-              usuarios = dato; // Guarda el resultado obtenido de dato en el array usuarios
-
-              console.log("Vector Usuario: ", usuarios[0].photoURL);
-
-              /** Se manda parametros a otra pagina  **/
-              let params: NavigationExtras = {
-                queryParams:{
-                  nombre: persona[0].displayName,
-                  apellido: persona[0].lastname,
-                  email: persona[0].email,
-                  imagen: usuarios[0].photoURL
-                }
-              }
-              this.router.navigate(["user-main"], params); // Redirige a la pagina user-main y pasa parametros
-  
-            });
+            
             
           }else if (persona[0].rol === "admin") {
             console.log("Entra ADMIN")
@@ -176,13 +221,13 @@ export class IniciarSesionPage implements OnInit {
         });
         (await toast).present();
       }
-    });
+    });*/
     //this.router.navigate(['folder/Inbox']);
   }
 
   // Verifica los datos Email & Password y devuelve el usuario
   
-  verificarDatos(): Observable<any[]> {
+ /* verificarDatos(): Observable<any[]> {
     console.log(
       "🚀 ~ file: iniciar-sesion.page.ts ~ verificarDatos ~ this.user",
       this.user
@@ -195,7 +240,7 @@ export class IniciarSesionPage implements OnInit {
           .where("password", "==", this.user.password)
       )
       .valueChanges();
-  }
+  }*/
 
   /** Obtener El usuario de la tabla User **/
   getDataEmailPass(): Observable<any[]> {
@@ -228,7 +273,10 @@ export class IniciarSesionPage implements OnInit {
    }
  
    async onLoginGoogle() {
-     const user = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    /* const user = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+     console.log(user);*/
+     this.authService.loginGoogle();
+     this.router.navigate(["user-main"]);
      // TODO sign into offline app
    }
  
