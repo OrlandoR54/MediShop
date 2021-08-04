@@ -8,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminMainPage implements OnInit {
 
-  constructor() {
+  constructor(private menu: MenuController) {
     
    }
 
 
   ngOnInit() {
+  }
+
+  /** Habilita y abre el Menu ADMIN **/
+  openCustom() {
+    this.menu.enable(true, "admin-menu");
+    this.menu.open("admin-menu");
   }
 
 }

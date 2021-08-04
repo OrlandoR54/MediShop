@@ -93,7 +93,7 @@ export class IniciarSesionPage implements OnInit {
     /** Crea un mensaje */
     const toast = this.toastController.create({
       message: `Verificando credenciales`,
-      duration: 2000,
+      duration: 3000,
     });
 
     (await toast).present(); // Muestra el mensaje
@@ -137,11 +137,11 @@ export class IniciarSesionPage implements OnInit {
              /** Se manda parametros a otra pagina  **/
             let params: NavigationExtras = {
               queryParams:{
-                people: usuarios[0],
-                /*nombre: persona[0].displayName,
-                apellido: persona[0].lastname,
-                email: persona[0].email,
-                imagen: usuarios[0].photoURL*/
+                //people: usuarios[0],
+                nombre: usuarios[0].displayName,
+                apellido: usuarios[0].lastname,
+                email: usuarios[0].email,
+                imagen: usuarios[0].photoURL
               }
             }
             this.router.navigate(["user-main"], params); // Redirige a la pagina user-main y pasa parametros

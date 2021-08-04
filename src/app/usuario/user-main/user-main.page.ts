@@ -1,7 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { Persona } from './../../modelo/persona';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { MenuController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -36,12 +36,13 @@ export class UserMainPage implements OnInit {
 
   showLocationDetail = false;
 
-  public user;
+  user: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private menuController: MenuController
+    private menu: MenuController,
+    private navCtrl: NavController
     ) {
     route.queryParams.subscribe(params =>{
       console.log(params);
@@ -52,17 +53,18 @@ export class UserMainPage implements OnInit {
         console.log(this.persona);
       }
     })
+    
    }
 
 
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
     console.log("Usuario ACTUAL: ", this.user);
-    this.menuController.enable(true);
+    //this.menuController.enable(true);
+    
   }
 
   
-
   doRefresh(ev) {
     setTimeout(() => {
       ev.target.complete();
@@ -72,6 +74,22 @@ export class UserMainPage implements OnInit {
   onScroll(ev) {
     const offset = ev.detail.scrollTop;
     this.showLocationDetail = offset > 50;
+  }
+
+  openFirst() {
+    //this.menu.get("user-menu");
+    this.menu.enable(true, "user-menu");
+    this.menu.open("user-menu");
+     /** Se manda parametros a otra pagina  **/
+     let params: NavigationExtras = {
+      queryParams:{
+        people: this.user,
+        /*nombre: usuarios[0].displayName,
+        apellido: usuarios[0].lastname,
+        email: usuarios[0].email,
+        imagen: usuarios[0].photoURL*/
+      }
+    }
   }
 
 }

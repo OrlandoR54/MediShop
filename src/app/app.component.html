@@ -1,14 +1,14 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
-  <!--<ion-split-pane contentId="main-content">
-    <ion-menu side="start" menuId="user-menu" contentId="main-content" type="overlay">
+  <!--------------------- MENU USER --------------------->
+ <!-- <ion-split-pane contentId="main-content"> -->
+    <ion-menu side="start" menuId="user-menu" type="overlay" >
       <ion-content>
 
         <div class="menu-header-bg"></div>
         <div class="header-content">
             <img src= {{image}}>  
             <ion-label>
-            <h2>{{nombre}} {{apellido}}</h2>
+            <h2>{{nombre}}</h2>
             <p>Desarrollador</p>
           </ion-label>
         </div>
@@ -27,6 +27,37 @@
         </div>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>-->
+    
+ <!-- </ion-split-pane> -->
+
+ <!--------------------- MENU ADMIN --------------------->
+ <!-- <ion-split-pane contentId="main-content"> -->
+  <ion-menu side="start" menuId="admin-menu" type="overlay">
+    <ion-content>
+
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+          <img src= {{image}}>  
+          <ion-label>
+          <h2>{{nombre}} {{apellido}}</h2>
+          <p>Desarrollador</p>
+        </ion-label>
+      </div>
+
+      <ion-list id="inbox-list">
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesAdmin; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <div class="content-btn">
+        <ion-button class="btn-logout" strong="true" shape="round" (click)= "onLogout()">Cerrar Sesion</ion-button>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+<!-- </ion-split-pane> -->
 </ion-app>

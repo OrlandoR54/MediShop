@@ -18,6 +18,8 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
 
+  persona: Persona = new Persona();
+
   public appPages = [
     { title: 'Inicio', url: '/user-main', icon: 'home' },
     { title: 'Mis Direcciones', url: '/folder/Outbox', icon: 'location' },
@@ -25,10 +27,19 @@ export class AppComponent {
     { title: 'Mis Pedidos', url: '/folder/Trash', icon: 'book' },
   ];
 
+  public appPagesAdmin = [
+    { title: 'Inicio', url: '/user-main', icon: 'home' },
+    { title: 'Productos', url: '/product', icon: 'medical' },
+    { title: 'Usuarios', url: '/product', icon: 'people' },
+    { title: 'Mi Cuenta', url: '/user-update', icon: 'person' },
+    { title: 'Pedidos', url: '/folder/Trash', icon: 'book' },
+  ];
+
   nombre: string;
   apellido: string;
   email: string;
   image: any;
+  user: any;
 
   constructor(
     private authService: AuthService,
@@ -39,7 +50,7 @@ export class AppComponent {
     private menu: MenuController,
     public afs: AngularFirestore,
   ) {
-    /** Se recupera lo parametros atraves de la navegacion **/
+
     route.queryParams.subscribe(params => {
       console.log("Parametros: ", params)
       this.nombre = params.nombre;
@@ -48,9 +59,7 @@ export class AppComponent {
       this.image =  params.imagen ;
       console.log("IMAGEN: ", this.image);
     });
-  }
-
-  user: Persona = new Persona();
+  } 
 
   onLogout() {
     console.log("logout");
@@ -59,4 +68,5 @@ export class AppComponent {
     this.menu.close(); // Se cierra el sidemenu
 
   }
+
 }
