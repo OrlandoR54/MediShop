@@ -1,0 +1,25 @@
+ion-fab-button {
+    --background : #00C4CC;
+}
+
+head{
+    margin-top: 90px;
+}
+
+.header .col {
+    background-color:#00C4CC;
+}
+
+.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}

@@ -140,7 +140,7 @@ export class RegistroPage implements OnInit {
           (await toast).present();
         }
       });*/
-      await this.authService.onRegister(this.user.email, this.user.password); // registra al usuario por email y contrasena
+      await this.authService.onRegister(this.user.displayName, this.user.email, this.user.password); // registra al usuario por email y contrasena
       
       this.router.navigate(["iniciar-sesion"]);
   }

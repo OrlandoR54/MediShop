@@ -1,6 +1,7 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Product } from './../modelo/product';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -25,6 +26,13 @@ export class ProductService {
       .set(Object.assign({}, product), { merge: true });
   }
 
-  
+  getProductos(): Observable<any[]> {
+    return this.afs.collection("products").valueChanges();
+  }
+
+  getCategories(): Observable<any[]> {
+    return this.afs.collection("category", 
+    ref => ref.where("active" , "==", true)).valueChanges();
+  }
 
 }

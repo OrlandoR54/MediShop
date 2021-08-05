@@ -1,5 +1,7 @@
+import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { NavigationExtras, Router } from '@angular/router';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-product',
@@ -8,11 +10,36 @@ import { AlertController } from '@ionic/angular';
 })
 export class ProductPage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  productos: any;
+
+  constructor(
+    public alertController: AlertController,
+    private router: Router,
+    private menu: MenuController,
+    private productService: ProductService
+  ) { }
 
   ngOnInit() {
+    this.productos = this.productService.getProductos();
   }
 
+  editar(producto: any){
+    let params: NavigationExtras = {
+      queryParams: {
+        producto: producto
+      }
+    }
+    this.router.navigate(['create-product'], params)
+  }
 
+  crear(){
+    this.router.navigate(['create-product'])
+  }
+
+   /** Habilita y abre el Menu ADMIN **/
+   openCustom() {
+    this.menu.enable(true, "admin-menu");
+    this.menu.open("admin-menu");
+  }
 
 }

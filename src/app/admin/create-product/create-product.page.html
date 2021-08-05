@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Añadir Producto</ion-title>
+    <div class="btn-icon" (click)="back()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </div>
+    <div class="content-title">
+      <ion-title>Añadir Producto</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -18,16 +23,27 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Precio unitario</ion-label>
-        <ion-input inputmode="decimal" minlength= 1 placeholder="3.89" [(ngModel)]="producto.price" required></ion-input>
+        <ion-input inputmode="decimal" type="decimal" minlength= 1 placeholder="3.89" [(ngModel)]="producto.price" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Cantidad en stock</ion-label>
         <ion-input type="number" inputmode="number" placeholder="20" [(ngModel)]="producto.stock" required></ion-input>
       </ion-item>
+      
+
       <ion-item>
         <ion-label position="floating">Categoria</ion-label>
-        <ion-input type="number" inputmode="number" placeholder="20" [(ngModel)]="producto.category" required></ion-input>
+          <ion-select [(ngModel)]="producto.category">
+            <ion-select-option #soption *ngFor="let c of categorias | async" value="{{c.uid}}" >{{c.name}}</ion-select-option>
+             <!-- <ion-select-option value="02">Green Day</ion-select-option>
+             <ion-select-option value="03">Nirvana</ion-select-option>
+             <ion-select-option value="04">Pearl Jam</ion-select-option>
+             <ion-select-option value="05">Smashing Pumpkins</ion-select-option>
+             <ion-select-option value="06">Soundgarden</ion-select-option>
+             <ion-select-option value="07">Stone Temple Pilots</ion-select-option>-->
+           </ion-select>
       </ion-item>
+
       <div class="file has-name is-boxed">
           <ion-item>
             <ion-label position="floating">Cargar imagen</ion-label>
@@ -41,17 +57,27 @@
           </ion-input>
           </ion-item>
       </div>
+      <br>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success"
+          role="progressbar" [style.width]="(uploadPercent | async) +'%'">
+
+          <!-- <span class="progressText" *ngIf="urlImage | async">
+            Ok!!</span> -->
+        </div>
+      </div>
       <ion-input #imageProduct type="hidden" [value]="urlImage | async" [(ngModel)]="producto.image"></ion-input>
 
 
     <!-- Boton de registro -->
+
     <div class="content-btn">
       <ion-button *ngIf="urlImage | async; else btnDisabled" shape="round" fill="outline" (click)= "addProduct()">Agregar Producto</ion-button>
+    
+      <ng-template #btnDisabled>
+        <ion-button shape="round" disabled= true fill="outline" (click)= "addProduct()" >Agregar Producto</ion-button>
+      </ng-template>
     </div>
-    <ng-template #btnDisabled>
-      <ion-button shape="round" disabled= true fill="outline" (click)= "addProduct()" >Agregar Producto</ion-button>
-    </ng-template>
-
   </div>
 
 </ion-content>

@@ -45,12 +45,12 @@ export class UserMainPage implements OnInit {
     private navCtrl: NavController
     ) {
     route.queryParams.subscribe(params =>{
-      console.log(params);
+      console.log("PARAMETROS USER-MAIN: ", params);
       this.persona = new Persona();
       //this.contacto = params.contacto;
       if (this.router.getCurrentNavigation().extras.queryParams) {
         this.persona = this.router.getCurrentNavigation().extras.queryParams.people;
-        console.log(this.persona);
+        console.log("USER-MAIN: ", this.persona);
       }
     })
     
@@ -83,7 +83,7 @@ export class UserMainPage implements OnInit {
      /** Se manda parametros a otra pagina  **/
      let params: NavigationExtras = {
       queryParams:{
-        people: this.user,
+        people: this.persona,
         /*nombre: usuarios[0].displayName,
         apellido: usuarios[0].lastname,
         email: usuarios[0].email,

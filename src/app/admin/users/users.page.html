@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Recent Conversations
+    </ion-list-header>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <div>
+            <ion-label>
+              Imagen
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label size="3">
+              Nombre
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="3" size-sm>
+          <div>
+            <ion-label>
+              Email
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Telefono
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Detalle
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngFor="let u of usuarios | async">
+      <ion-item (click)="editar(u)"> 
+        <ion-avatar slot="start">
+          <img src={{u.photoURL}}>
+        </ion-avatar>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <div>
+                <ion-label>
+                  <h2>{{u.displayName}}</h2>
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="5">
+              <div>
+                <ion-label>
+                  <h3>{{u.email}}</h3>
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-label>
+                  <p>{{u.numberPhone}}</p>
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-label>
+                  <p>{{u.description}}</p>
+                </ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+  </ion-list>
+
+    <!-- fab placed to the bottom end -->
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button (click)="crear()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

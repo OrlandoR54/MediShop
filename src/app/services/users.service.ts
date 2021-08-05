@@ -15,7 +15,7 @@ export class UsersService {
   }
 
   saveContacto(contacto: Persona){
-    const refContacto = this.afs.collection("usuarios");
+    const refContacto = this.afs.collection("users");
 
     if (contacto.uid == null) {
       contacto.uid = this.afs.createId()
@@ -28,6 +28,11 @@ export class UsersService {
       .set(Object.assign({}, contacto), { merge: true });
   }
 
+  /** Obtiene los usuarios con rol "usuario" **/
+  getUsuarios(): Observable<any[]> {
+    return this.afs
+      .collection("users", (ref) => ref.where("rol", "==", "usuario")).valueChanges();
+  }
 
   getContactos(): Observable<any[]> {
     return this.afs

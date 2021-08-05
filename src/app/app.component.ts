@@ -20,6 +20,13 @@ export class AppComponent {
 
   persona: Persona = new Persona();
 
+  nombre: string;
+  apellido: string;
+  email: string;
+  image: any;
+  rol: any;
+  
+
   public appPages = [
     { title: 'Inicio', url: '/user-main', icon: 'home' },
     { title: 'Mis Direcciones', url: '/folder/Outbox', icon: 'location' },
@@ -28,18 +35,16 @@ export class AppComponent {
   ];
 
   public appPagesAdmin = [
-    { title: 'Inicio', url: '/user-main', icon: 'home' },
+    { title: 'Inicio', url: '/admin-main', icon: 'home' },
     { title: 'Productos', url: '/product', icon: 'medical' },
-    { title: 'Usuarios', url: '/product', icon: 'people' },
-    { title: 'Mi Cuenta', url: '/user-update', icon: 'person' },
-    { title: 'Pedidos', url: '/folder/Trash', icon: 'book' },
+    { title: 'Categorias', url: '/category', icon: 'albums' },
+    { title: 'Usuarios', url: '/users', icon: 'people' },
+    { title: 'Repartidores', url: '/show-repartidor', icon: 'man' },
+    { title: 'Mi Cuenta', url: '', icon: 'person' },
+    { title: 'Pedidos', url: '', icon: 'book' },
   ];
 
-  nombre: string;
-  apellido: string;
-  email: string;
-  image: any;
-  user: any;
+  
 
   constructor(
     private authService: AuthService,
@@ -56,7 +61,8 @@ export class AppComponent {
       this.nombre = params.nombre;
       this.apellido = params.apellido;
       this.email = params.email;
-      this.image =  params.imagen ;
+      this.image =  params.imagen;
+      this.rol =  params.rol;
       console.log("IMAGEN: ", this.image);
     });
   } 

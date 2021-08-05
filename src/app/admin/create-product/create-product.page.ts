@@ -18,6 +18,7 @@ export class CreateProductPage implements OnInit {
   selectedFile: any;
   isSelected: boolean = false;
   producto: Product = new Product();
+  categorias: any;
   
   loading: HTMLIonLoadingElement;
   constructor(
@@ -27,15 +28,17 @@ export class CreateProductPage implements OnInit {
     public toastController: ToastController,
     public alertController: AlertController,
     private router: Router
-  ) { }
+  ) {  }
 
   @ViewChild('imageProduct') inputImageProducto: ElementRef;
   @ViewChild('clearInput') clearInp: ElementRef;
+  @ViewChild('soption') option: ElementRef;
 
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
 
   ngOnInit() {
+    this.categorias = this.prodService.getCategories();
   }
 
   /** Se carga una imagen en el Storage **/
@@ -52,6 +55,8 @@ export class CreateProductPage implements OnInit {
 
   }
 
+  
+
   async addProduct(){
      /** Crea un mensaje */
     const toast = this.toastController.create({
@@ -62,14 +67,15 @@ export class CreateProductPage implements OnInit {
       message: "Ingrese todas las casillas",
       duration: 2000,
     });
-
+    //console.log(this.option.nativeElement.value);
     /** valida quue est datos en los input */
     if (this.producto.displayName || this.producto.price || this.producto.stock != null) {
+      
       this.prodService.saveProduct(this.producto);
       (await toast).present();
       this.producto.description ='';
-      this.producto.price = null;
-      this.producto.stock = null;
+      this.producto.price = 0;
+      this.producto.stock = 0;
       this.presentAlertConfirm();
     } else {
       (await toastNo).present();
@@ -105,4 +111,7 @@ export class CreateProductPage implements OnInit {
     await alert.present();
   }
 
+  back(){
+    this.router.navigate(['product'])
+  }
 }

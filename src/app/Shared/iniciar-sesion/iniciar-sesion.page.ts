@@ -106,6 +106,19 @@ export class IniciarSesionPage implements OnInit {
 
       console.log("Vector Usuario: ", usuarios[0].photoURL);
 
+       /** Se manda parametros a otra pagina  **/
+       let params: NavigationExtras = {
+        queryParams:{
+          //people: usuarios[0],
+          people: dato,
+          nombre: usuarios[0].displayName,
+          apellido: usuarios[0].lastname,
+          email: usuarios[0].email,
+          imagen: usuarios[0].photoURL,
+          rol: usuarios[0].rol
+        }
+      }
+
       if (usuarios.length == 1) { // Verifica si existe un usuario
         console.log("El usuario si existe");
 
@@ -120,7 +133,7 @@ export class IniciarSesionPage implements OnInit {
             delete person.password;
             //.set("persona", persona[0]);
             /////
-            this.router.navigate(["/menu-teacher/home"]);
+            this.router.navigate([""], params); // Redirige a la pagina repartidor y pasa parametros
 
           } else if (usuarios[0].rol === "usuario") { // Condicional si es usuario
 
@@ -134,23 +147,14 @@ export class IniciarSesionPage implements OnInit {
             delete person.password;
             //this.storage.set("persona", persona[0]);
             
-             /** Se manda parametros a otra pagina  **/
-            let params: NavigationExtras = {
-              queryParams:{
-                //people: usuarios[0],
-                nombre: usuarios[0].displayName,
-                apellido: usuarios[0].lastname,
-                email: usuarios[0].email,
-                imagen: usuarios[0].photoURL
-              }
-            }
+            
             this.router.navigate(["user-main"], params); // Redirige a la pagina user-main y pasa parametros
 
             
             
           }else if (usuarios[0].rol === "admin") {
             console.log("Entra ADMIN")
-            this.router.navigate(["admin-main"]); // Redirige a la pagina user-main y pasa parametros
+            this.router.navigate(["admin-main"], params); // Redirige a la pagina admin-main y pasa parametros// Redirige a la pagina user-main y pasa parametros
           }
         } else {
         const toast = this.toastController.create({

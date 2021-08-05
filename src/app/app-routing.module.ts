@@ -60,6 +60,14 @@ const routes: Routes = [
   {
     path: 'user-product',
     loadChildren: () => import('./usuario/user-product/user-product.module').then( m => m.UserProductPageModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./admin/users/users.module').then( m => m.UsersPageModule)
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./admin/category/category.module').then( m => m.CategoryPageModule)
   }
 ];
 

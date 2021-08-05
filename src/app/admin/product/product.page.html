@@ -1,9 +1,138 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product</ion-title>
+    <ion-buttons slot="start" (click)="openCustom()">
+      <ion-menu-button auto-hide="false" menu="admin-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+  <ion-list>
+    <ion-list-header>
+      Añadir, Actualizar Los Productos
+    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-label>
+              Imagen
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Nombre
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Precio
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Stock
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Detalle
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngFor="let p of productos | async">
+      <ion-item (click)="editar(p)"> 
+        <ion-avatar slot="start">
+          <img src={{p.image}}>
+        </ion-avatar>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                <ion-label>
+                  <h2>{{p.displayName}}</h2>
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-label>
+                  <h3>{{p.price}}</h3>
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-label>
+                  <p>{{p.stock}}</p>
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-label>
+                  <p>{{p.description}}</p>
+                </ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+  </ion-list>
+
+    <!-- fab placed to the bottom end -->
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button (click)="crear()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>
+<!-- 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+  <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+  <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+</head>
+<body ng-controller="MyCtrl as ctrl">
+  
+  <ion-content>
+      <div class="row header">
+        <div class="col">Imagen</div>
+        <div class="col">Nombre</div>
+        <div class="col">Precio</div>
+        <div class="col">Stock</div>
+        <div class="col">Detalles</div>
+        <div class="col"></div>
+      </div>
+      <div class="row" *ngFor="let p of productos | async">
+        <div class="col"><img src={{p.image}}></div>
+        <div class="col">{{p.displayName}}</div>
+        <div class="col">{{p.price}}</div>
+        <div class="col">{{p.stock}}</div>
+        <div class="col">{{p.description}}</div>
+        <div class="col"><button class="button" ng-click="ctrl.add($index)">Add</button></div>
+      </div>
+
+    
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+        <ion-fab-button (click)="crear()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+  </ion-content>
+</body>
+-->

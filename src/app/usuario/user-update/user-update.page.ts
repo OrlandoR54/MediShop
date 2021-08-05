@@ -4,7 +4,7 @@ import { ToastController, MenuController, AlertController } from '@ionic/angular
 import { AuthService } from './../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-update',
@@ -15,6 +15,7 @@ export class UserUpdatePage implements OnInit {
 
 
   persona: Persona = new Persona();
+  user: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,23 +26,29 @@ export class UserUpdatePage implements OnInit {
     public alertController: AlertController,
     public menuCtrl: MenuController
     ) { 
-      route.queryParams.subscribe(params =>{
+      /*route.queryParams.subscribe(params =>{
         console.log(params);
         this.persona = new Persona();
-        //this.contacto = params.contacto;
-        if (this.router.getCurrentNavigation().extras.queryParams) {
-          this.persona = this.router.getCurrentNavigation().extras.queryParams.people;
-          console.log(this.persona);
-        }
-      });
+        //this.persona = params.people;
+      
+        //if (this.router.getCurrentNavigation().extras.queryParams) {
+         // this.persona = this.router.getCurrentNavigation().extras.queryParams.people;
+         // console.log("USER-UPDATE: ", this.persona);
+        //}
+      });*/
+
+      this.user = this.authService.getCurrentUser().then(data => {this.persona = data;});
 
       this.menuCtrl.enable(false);
       
     }
-
+  
   ngOnInit() {
   }
 
+  update(){
+    this.contactService.saveContacto(this.persona);
+  }
 
   back(){
     this.router.navigate(['user-main'])
