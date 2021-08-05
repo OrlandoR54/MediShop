@@ -53,7 +53,8 @@ export class ProductService {
 
   getProdCat(categoryUID:string): Observable<any[]> {
     return this.afs.collection("products", 
-    ref => ref.where("categoryUID" , "==", categoryUID)).valueChanges();
+    ref => ref.where("categoryUID" , "==", categoryUID)
+              .where("deleted" , "==", false)).valueChanges();
   }
 
   getCategoriesUID(uid:string): Observable<any[]> {

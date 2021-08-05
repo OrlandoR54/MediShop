@@ -72,6 +72,10 @@ const routes: Routes = [
   {
     path: 'create-category',
     loadChildren: () => import('./admin/create-category/create-category.module').then( m => m.CreateCategoryPageModule)
+  },
+  {
+    path: 'product-x-cat',
+    loadChildren: () => import('./usuario/product-x-cat/product-x-cat.module').then( m => m.ProductXCatPageModule)
   }
 ];
 

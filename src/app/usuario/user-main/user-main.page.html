@@ -26,11 +26,9 @@
   </ion-row>
  
 
-  
-
-
+  <!-- SLIDER DE CATEGORIAS -->
   <ion-slides [options]="catSlideOpts">
-    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async">
+    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async" (click)= "showCategory(cat.uid)">
      
         <div class="padre">
           <img class="photo-cat" src= {{cat.photoURL}}>  
@@ -43,37 +41,40 @@
     </ion-slide>
   </ion-slides>
 
+  <!-- SLIDER DE BANNERS -->
   <ion-slides [options]="highlightSlideOpts">
     <ion-slide *ngFor="let h of highlights">
       <img [src]="h.url">
     </ion-slide>
   </ion-slides>
  
-  <ion-text color="dark"><b style="padding-left: 10px;">Categoria</b></ion-text>
+  <div class="content-seg">
   
-  <div class="ion-activatable ripple-parent">
-    A plain div with a bounded ripple effect
-    <ion-ripple-effect></ion-ripple-effect>
+      <ion-text color="dark"><b>Categoria</b></ion-text>
+
+      <ion-button shape="round" fill="clear">Ver más<ion-icon slot="end" name="chevron-forward-outline" ></ion-icon></ion-button>
+    
   </div>
 
-  <ion-slides [options]="highlightSlideOpts">
-    <ion-slide *ngFor="let h of highlights">
-      <!-- Card USUARIOS-->
-      <div class="content-main">
-        <ion-card>
-          <div class="btn-icon">
-            <img class="user-total" src="../assets/imagenes/total.png" />
+    <ion-slides [options]="prodSlideOpts">
+      <ion-slide *ngFor="let p of productos | async">
+        <!-- Card USUARIOS-->
+        <div class="content-main">
+          <ion-card>
+            <div class="btn-icon">
+              <img class="user-total" src= {{p.photoURL}} />
+            </div>
+          <div class="content-title">
+            <ion-card-header>
+              <ion-card-title>{{p.displayName}}</ion-card-title>
+              <ion-card-subtitle color="dark"><b>${{p.price}}</b></ion-card-subtitle>
+            </ion-card-header>
           </div>
-        <div class="content-title">
-          <ion-card-header>
-            <ion-card-subtitle>Total De Usuarios</ion-card-subtitle>
-            <ion-card-title>#Numero</ion-card-title>
-          </ion-card-header>
+          </ion-card>
         </div>
-        </ion-card>
-      </div>
-    </ion-slide>
-  </ion-slides>
+      </ion-slide>
+    </ion-slides>
+ 
   <!--
   <ion-text color="dark"><b style="padding-left: 10px;">Featured</b></ion-text>
 
@@ -152,46 +153,5 @@
     </ion-slide>
   </ion-slides>
 -->
-  <ion-card-content>
-    hola
-  </ion-card-content>
   
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
-  <ion-card-content>
-    hola
-  </ion-card-content>
 </ion-content>

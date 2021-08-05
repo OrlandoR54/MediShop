@@ -22,6 +22,13 @@ export class UserMainPage implements OnInit {
     spaceBetween: 10
   };
 
+  prodSlideOpts = {
+    freeMode: true,
+    slidesPerView: 2,
+    slidesOffsetBefore: 11,
+    spaceBetween: 10
+  };
+
   highlightSlideOpts =  {
     slidesPerView: 1.05,
     spaceBetween: 10,
@@ -36,8 +43,8 @@ export class UserMainPage implements OnInit {
   };
 
   public highlights = [
-    { url: '../assets/imagenes/Banner-1.png'},
     { url: '../assets/imagenes/Banner-2.gif'},
+    { url: '../assets/imagenes/Banner-1.png'},
     { url: '../assets/imagenes/Banner-3.gif'},
   ];
 
@@ -105,6 +112,19 @@ export class UserMainPage implements OnInit {
         imagen: usuarios[0].photoURL*/
       }
     }
+  }
+
+  prodct_cat: any;
+
+  showCategory(uid:string){
+    this.prodct_cat = this.productService.getProdCat(uid);
+    let params: NavigationExtras = {
+      queryParams:{
+        prod_cat: this.prodct_cat,
+        
+      }
+    }
+    this.router.navigate(['product-x-cat'], params);
   }
 
 }
