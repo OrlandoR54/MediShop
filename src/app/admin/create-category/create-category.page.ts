@@ -69,8 +69,6 @@ export class CreateCategoryPage implements OnInit {
      
      this.prodService.saveCategory(this.category);
      (await toast).present();
-     this.category.description ='';
-     this.category.name = '';
      this.presentAlertConfirm();
    } else {
      (await toastNo).present();

@@ -24,36 +24,57 @@
       <ion-searchbar placeholder="Proteinas, vitaminas o medicinas"></ion-searchbar>
     </ion-col>
   </ion-row>
+ 
 
-  <!-- Card USUARIOS-->
-  <div class="content-main">
-    <ion-card>
-      <div class="btn-icon">
-        <img class="user-total" src="../assets/imagenes/total.png" />
-      </div>
-     <div class="content-title">
-      <ion-card-header>
-        <ion-card-subtitle>Total De Usuarios</ion-card-subtitle>
-        <ion-card-title>#Numero</ion-card-title>
-      </ion-card-header>
-     </div>
-    </ion-card>
-  </div>
+  
 
 
   <ion-slides [options]="catSlideOpts">
-    <ion-slide *ngFor="let cat of categories">
-      <img [src]="cat.photoURL">
+    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async">
+     
+        <div class="padre">
+          <img class="photo-cat" src= {{cat.photoURL}}>  
+          <div class="son">
+            <ion-label>{{cat.name}}</ion-label>
+            <ion-input type="hidden" value={{cat.uid}}></ion-input>
+          </div>
+        </div>
+
     </ion-slide>
   </ion-slides>
 
-<!--
-  <ion-slides [optio>ns]="highlightSlideOpts">
+  <ion-slides [options]="highlightSlideOpts">
     <ion-slide *ngFor="let h of highlights">
-      <img [src]="h.img">
+      <img [src]="h.url">
     </ion-slide>
   </ion-slides>
  
+  <ion-text color="dark"><b style="padding-left: 10px;">Categoria</b></ion-text>
+  
+  <div class="ion-activatable ripple-parent">
+    A plain div with a bounded ripple effect
+    <ion-ripple-effect></ion-ripple-effect>
+  </div>
+
+  <ion-slides [options]="highlightSlideOpts">
+    <ion-slide *ngFor="let h of highlights">
+      <!-- Card USUARIOS-->
+      <div class="content-main">
+        <ion-card>
+          <div class="btn-icon">
+            <img class="user-total" src="../assets/imagenes/total.png" />
+          </div>
+        <div class="content-title">
+          <ion-card-header>
+            <ion-card-subtitle>Total De Usuarios</ion-card-subtitle>
+            <ion-card-title>#Numero</ion-card-title>
+          </ion-card-header>
+        </div>
+        </ion-card>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <!--
   <ion-text color="dark"><b style="padding-left: 10px;">Featured</b></ion-text>
 
   <ion-slides [options]="featuredSlideOpts">

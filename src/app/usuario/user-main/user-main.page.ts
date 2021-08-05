@@ -35,6 +35,12 @@ export class UserMainPage implements OnInit {
     freeMode: true
   };
 
+  public highlights = [
+    { url: '../assets/imagenes/Banner-1.png'},
+    { url: '../assets/imagenes/Banner-2.gif'},
+    { url: '../assets/imagenes/Banner-3.gif'},
+  ];
+
   showLocationDetail = false;
 
   user: any;
@@ -69,6 +75,7 @@ export class UserMainPage implements OnInit {
     //this.menuController.enable(true);
     this.productos = this.productService.getProductActive();
     this.categories = this.productService.getCategoriesActive();
+    console.log("Productos: ", this.productos);
     
   }
 

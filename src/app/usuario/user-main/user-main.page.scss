@@ -80,10 +80,12 @@ ion-slides {
    
 }
 
-ion-card{
-  --background: #4acdd1;
-  width: 100%;
-  height: 100%;
+div {
+  ion-card{
+    --background: #4acdd1;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .user-total {
@@ -92,5 +94,37 @@ ion-card{
   margin: 8px 20px;
  // margin-right: 38px;
 }
+
+.padre{
+  position:relative;
+  //background-color: green;
+}
+
+.son {
+  position: absolute;
+  //background-color: #4acdd1;
+  background: linear-gradient(90deg, #75DFD5 0%, #4DDFD5 100%);
+  opacity: 0.5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  font-weight: bold;
+  font-size: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  //display: none;
+}
+/*
+.padre:hover .son {
+  display: block;
+}
+*/
+
+.photo-cat {
+  border-radius: 15px;
+}
+
 
 
