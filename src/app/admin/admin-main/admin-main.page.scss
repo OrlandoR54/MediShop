@@ -1,0 +1,69 @@
+.user-total {
+    max-width:100%;
+    height:10em;
+    margin: 6px 6px;
+    margin-right: 38px;
+}
+
+ion-card-header{
+    margin: 10px 6px;
+}
+
+
+.gfg {
+    width:200px;
+    text-align:center;
+    padding:9px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.btn-icon{
+    display: block;
+    text-align: left;
+    float: left;
+}
+
+.content-title{
+    display: block;
+    text-align: left;
+    float: left;
+}
+
+ion-card{
+    --background: #4acdd1;
+    width: 350px;
+}
+
+.content-main {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+}
+
+.content-main-2 {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.content-main-3 {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.content-main-4 {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 105%;
+    transform: translate(-50%, -50%);
+}
+

@@ -1,3 +1,4 @@
+import { ProductService } from './../../services/product.service';
 import { AuthService } from './../../services/auth.service';
 import { Persona } from './../../modelo/persona';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
@@ -37,12 +38,16 @@ export class UserMainPage implements OnInit {
   showLocationDetail = false;
 
   user: any;
+  productos: any;
+  categories: any;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private menu: MenuController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private productService: ProductService
     ) {
     route.queryParams.subscribe(params =>{
       console.log("PARAMETROS USER-MAIN: ", params);
@@ -60,7 +65,10 @@ export class UserMainPage implements OnInit {
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
     console.log("Usuario ACTUAL: ", this.user);
+
     //this.menuController.enable(true);
+    this.productos = this.productService.getProductActive();
+    this.categories = this.productService.getCategoriesActive();
     
   }
 

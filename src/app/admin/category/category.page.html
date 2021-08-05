@@ -1,9 +1,77 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>category</ion-title>
+    <ion-buttons slot="start" (click)="openCustom()">
+      <ion-menu-button auto-hide="false" menu="admin-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Categorias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-list-header>
+      Añadir, Actualizar Categorias
+    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-label>
+              Imagen
+            </ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-label>
+              Nombre
+            </ion-label>
+          </div>
+        </ion-col>
+    
+        <ion-col>
+          <div>
+            <ion-label>
+              Descripción
+            </ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngFor="let c of categorias | async">
+      <ion-item (click)="editar(c)"> 
+        <ion-avatar slot="start">
+          <img src={{c.photoURL}}>
+        </ion-avatar>
+        <ion-grid>
+          <ion-row>
 
+            <ion-col>
+              <div>
+                <ion-label>
+                  <h2>{{c.name}}</h2>
+                </ion-label>
+              </div>
+            </ion-col>
+            
+            <ion-col>
+              <div>
+                <ion-label>
+                  <p>{{c.description}}</p>
+                </ion-label>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+  </ion-list>
+
+    <!-- fab placed to the bottom end -->
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button (click)="crear()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>

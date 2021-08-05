@@ -6,7 +6,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-product',
@@ -27,8 +27,19 @@ export class CreateProductPage implements OnInit {
     private prodService: ProductService,
     public toastController: ToastController,
     public alertController: AlertController,
-    private router: Router
-  ) {  }
+    private router: Router,
+    private route: ActivatedRoute
+  ) { 
+    route.queryParams.subscribe(params =>{
+      console.log(params);
+      this.producto = new Product();
+      //this.contacto = params.contacto;
+      if (this.router.getCurrentNavigation().extras.queryParams) {
+        this.producto = this.router.getCurrentNavigation().extras.queryParams.producto;
+        console.log(this.producto);
+      }
+    })
+   }
 
   @ViewChild('imageProduct') inputImageProducto: ElementRef;
   @ViewChild('clearInput') clearInp: ElementRef;

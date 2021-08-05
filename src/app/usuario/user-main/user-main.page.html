@@ -5,7 +5,7 @@
       </ion-buttons>
       <ion-title>
         <div class = "gfg">
-          <img src="../assets/imagenes/MediShop1.png">
+          <img class="logo" src="../assets/imagenes/MediShop1.png">
         </div>
     </ion-title>
     </ion-toolbar>
@@ -24,14 +24,31 @@
       <ion-searchbar placeholder="Proteinas, vitaminas o medicinas"></ion-searchbar>
     </ion-col>
   </ion-row>
-<!--
+
+  <!-- Card USUARIOS-->
+  <div class="content-main">
+    <ion-card>
+      <div class="btn-icon">
+        <img class="user-total" src="../assets/imagenes/total.png" />
+      </div>
+     <div class="content-title">
+      <ion-card-header>
+        <ion-card-subtitle>Total De Usuarios</ion-card-subtitle>
+        <ion-card-title>#Numero</ion-card-title>
+      </ion-card-header>
+     </div>
+    </ion-card>
+  </div>
+
+
   <ion-slides [options]="catSlideOpts">
     <ion-slide *ngFor="let cat of categories">
-      <img [src]="cat.img">
+      <img [src]="cat.photoURL">
     </ion-slide>
   </ion-slides>
 
-  <ion-slides [options]="highlightSlideOpts">
+<!--
+  <ion-slides [optio>ns]="highlightSlideOpts">
     <ion-slide *ngFor="let h of highlights">
       <img [src]="h.img">
     </ion-slide>

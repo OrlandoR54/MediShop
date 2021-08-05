@@ -1,3 +1,4 @@
+import { MenuController } from '@ionic/angular';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
@@ -13,8 +14,11 @@ export class UsersPage implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) { }
+
+  filterPost = '';
 
   ngOnInit() {
     this.usuarios = this.usersService.getUsuarios();
@@ -31,6 +35,17 @@ export class UsersPage implements OnInit {
 
   crear(){
     this.router.navigate([''])
+  }
+
+  /** Habilita y abre el Menu ADMIN **/
+  openCustom() {
+    this.menu.enable(true, "admin-menu");
+    this.menu.open("admin-menu");
+  }
+
+  onSearch(name:any){
+    this.usuarios = this.usersService.getSearch(name);
+    console.log(this.usuarios);
   }
 
 }

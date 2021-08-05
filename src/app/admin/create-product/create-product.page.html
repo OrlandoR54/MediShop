@@ -33,15 +33,17 @@
 
       <ion-item>
         <ion-label position="floating">Categoria</ion-label>
-          <ion-select [(ngModel)]="producto.category">
-            <ion-select-option #soption *ngFor="let c of categorias | async" value="{{c.uid}}" >{{c.name}}</ion-select-option>
-             <!-- <ion-select-option value="02">Green Day</ion-select-option>
-             <ion-select-option value="03">Nirvana</ion-select-option>
-             <ion-select-option value="04">Pearl Jam</ion-select-option>
-             <ion-select-option value="05">Smashing Pumpkins</ion-select-option>
-             <ion-select-option value="06">Soundgarden</ion-select-option>
-             <ion-select-option value="07">Stone Temple Pilots</ion-select-option>-->
-           </ion-select>
+        <ion-select [(ngModel)]="producto.categoryUID">
+          <ion-select-option #soption *ngFor="let c of categorias | async" value="{{c.uid}}" >{{c.name}}</ion-select-option>   
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Eliminar</ion-label>
+          <ion-select [value]="true" [(ngModel)]="producto.deleted">
+            <ion-select-option [value]="true" >desactivo</ion-select-option>
+            <ion-select-option [value]="false">activo</ion-select-option> 
+          </ion-select>
       </ion-item>
 
       <div class="file has-name is-boxed">
@@ -70,14 +72,18 @@
 
 
     <!-- Boton de registro -->
-
+    <div class="content-btn">
+      <ion-button shape="round" fill="outline" (click)= "addProduct()">Agregar Producto</ion-button>
+    </div> 
+`<!--
     <div class="content-btn">
       <ion-button *ngIf="urlImage | async; else btnDisabled" shape="round" fill="outline" (click)= "addProduct()">Agregar Producto</ion-button>
     
       <ng-template #btnDisabled>
         <ion-button shape="round" disabled= true fill="outline" (click)= "addProduct()" >Agregar Producto</ion-button>
       </ng-template>
-    </div>
+    </div> 
+  -->
   </div>
 
 </ion-content>

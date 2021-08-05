@@ -1,3 +1,4 @@
+import { MenuController } from '@ionic/angular';
 import { DeliveryrestService } from './../../services/deliveryrest.service';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class ShowRepartidorPage implements OnInit {
 
   constructor(
     private router: Router,
-    private repartidorServ: DeliveryrestService  
+    private repartidorServ: DeliveryrestService,
+    private menu: MenuController 
   ) { }
 
   ngOnInit() {
@@ -32,5 +34,11 @@ export class ShowRepartidorPage implements OnInit {
 
   crear(){
     this.router.navigate(['crear-repartidor']);
+  }
+
+  /** Habilita y abre el Menu ADMIN **/
+  openCustom() {
+    this.menu.enable(true, "admin-menu");
+    this.menu.open("admin-menu");
   }
 }

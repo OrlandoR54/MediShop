@@ -29,6 +29,12 @@ export class UsersService {
   }
 
   /** Obtiene los usuarios con rol "usuario" **/
+  getSearch(nombre:string): Observable<any[]> {
+    return this.afs
+      .collection("users", (ref) => ref.where("displayName", "==", nombre)).valueChanges();
+  }
+
+  /** Obtiene los usuarios con rol "usuario" **/
   getUsuarios(): Observable<any[]> {
     return this.afs
       .collection("users", (ref) => ref.where("rol", "==", "usuario")).valueChanges();
@@ -36,13 +42,13 @@ export class UsersService {
 
   getContactos(): Observable<any[]> {
     return this.afs
-      .collection("usuarios", (ref) => ref.where("rol", "==", "repartidor"))
+      .collection("users", (ref) => ref.where("rol", "==", "repartidor"))
       .valueChanges();
   }
 
   getUsuario(uid:string) {
     return this.afs
-      .collection("usuarios", (ref) => ref.where("uid", "==", uid))
+      .collection("users", (ref) => ref.where("uid", "==", uid))
       .valueChanges();
   }
 

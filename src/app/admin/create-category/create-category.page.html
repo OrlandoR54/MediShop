@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="btn-icon" (click)="back()">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </div>
+    <div class="content-title">
+      <ion-title>Añadir Categoria</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+
+    <ion-item>
+      <ion-label position="floating">Nombre de la categoriao</ion-label>
+      <ion-input placeholder="Proteina" [(ngModel)]="category.name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea placeholder="Ingrese la descripción de la categoria" [(ngModel)]="category.description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Eliminar</ion-label>
+        <ion-select [value]="true" [(ngModel)]="category.active">
+          <ion-select-option [value]="true" >activo</ion-select-option>
+          <ion-select-option [value]="false">desactivo</ion-select-option> 
+        </ion-select>
+    </ion-item>
+    
+
+    <div class="file has-name is-boxed">
+        <ion-item>
+          <ion-label position="floating">Cargar imagen</ion-label>
+          <br>
+          <ion-input 
+          accept=".png, .jpg" 
+          class="file-input" 
+          type="file" 
+          name="inputFile" 
+          (change)="onUpload($event)">
+        </ion-input>
+        </ion-item>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-success"
+        role="progressbar" [style.width]="(uploadPercent | async) +'%'">
+
+        <!-- <span class="progressText" *ngIf="urlImage | async">
+          Ok!!</span> -->
+      </div>
+    </div>
+    <ion-input #imageProduct type="hidden" [value]="urlImage | async" [(ngModel)]="category.photoURL"></ion-input>
+
+
+
+  <!-- Boton de registro -->
+  
+
+  <div class="content-btn">
+    <ion-button *ngIf="urlImage | async; else btnDisabled" shape="round" fill="outline" (click)= "addCategory()">Agregar Categoria</ion-button>
+  
+    <ng-template #btnDisabled>
+      <ion-button shape="round" disabled= true fill="outline" (click)= "addCategory()" >Agregar Categoria</ion-button>
+    </ng-template>
+  </div>
+  
+</div>
+
+</ion-content>

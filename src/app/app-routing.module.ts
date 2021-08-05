@@ -68,6 +68,10 @@ const routes: Routes = [
   {
     path: 'category',
     loadChildren: () => import('./admin/category/category.module').then( m => m.CategoryPageModule)
+  },
+  {
+    path: 'create-category',
+    loadChildren: () => import('./admin/create-category/create-category.module').then( m => m.CreateCategoryPageModule)
   }
 ];
 
