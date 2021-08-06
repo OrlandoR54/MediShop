@@ -76,6 +76,10 @@ const routes: Routes = [
   {
     path: 'product-x-cat',
     loadChildren: () => import('./usuario/product-x-cat/product-x-cat.module').then( m => m.ProductXCatPageModule)
+  },
+  {
+    path: 'product-detail',
+    loadChildren: () => import('./usuario/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
   }
 ];
 

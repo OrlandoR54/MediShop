@@ -1,18 +1,13 @@
 <ion-header>
-  <ion-toolbar >
-    <div class="btn-icon" (click)="back()">
-      <ion-icon name="chevron-back-outline"></ion-icon>
-    </div>
-    <div class="content-title">
-      <ion-title>{{categoriaUID}}</ion-title>
-    </div>
+  <ion-toolbar>
+    <ion-title>product-detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="content-main" *ngFor="let p of productos | async">
+  <div class="content-main">
     <ion-card>
-      <div class="btn-icon">
+   <!--   <div class="btn-icon">
         <img class="user-image" src= {{p.image}} />
       </div>
     <div class="content-title">
@@ -20,8 +15,7 @@
         <ion-card-title>{{p.displayName}}</ion-card-title>
         <ion-card-subtitle color="dark"><b>${{p.price}}</b></ion-card-subtitle>
       </ion-card-header>
-    </div>
+    </div> -->
     </ion-card>
   </div>
-
 </ion-content>

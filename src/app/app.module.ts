@@ -20,6 +20,7 @@ import { AgmCoreModule } from '@agm/core';
 import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import { HideHeaderDirective } from './directives/hide-header.directive';
 import { FormsModule } from '@angular/forms' 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [AppComponent, HideHeaderDirective],
@@ -39,7 +40,8 @@ import { FormsModule } from '@angular/forms'
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
-    })
+    }),
+    Ng2SearchPipeModule
           ],
   providers: [
     FormBuilder,

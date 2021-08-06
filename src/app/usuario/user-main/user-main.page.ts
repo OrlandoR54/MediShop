@@ -13,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMainPage implements OnInit {
 
+  searchTerm: string;
+
   persona: Persona = new Persona();
 
   catSlideOpts = {
@@ -24,7 +26,7 @@ export class UserMainPage implements OnInit {
 
   prodSlideOpts = {
     freeMode: true,
-    slidesPerView: 2,
+    slidesPerView: 2.3,
     slidesOffsetBefore: 11,
     spaceBetween: 10
   };
@@ -50,9 +52,16 @@ export class UserMainPage implements OnInit {
 
   showLocationDetail = false;
 
+  nutricionUID:string = "UDCqU3uI4TIRA7SmH9zM";
+  proteinUID:string = "qDTUkYvI6PViiZf4YeK6";
+
+  
+
   user: any;
   productos: any;
   categories: any;
+  proteinas: any;
+  nutricion: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -83,6 +92,10 @@ export class UserMainPage implements OnInit {
     this.productos = this.productService.getProductActive();
     this.categories = this.productService.getCategoriesActive();
     console.log("Productos: ", this.productos);
+
+    /** Productos por categorias **/
+    this.proteinas = this.productService.getProdCat(this.proteinUID);
+    this.nutricion = this.productService.getProdCat(this.nutricionUID);
     
   }
 
@@ -114,17 +127,23 @@ export class UserMainPage implements OnInit {
     }
   }
 
+  /********** PRODUCTOS POR CATEGORIAS **********/
+
   prodct_cat: any;
 
-  showCategory(uid:string){
+  showCategory(uid:string, name:string){
     this.prodct_cat = this.productService.getProdCat(uid);
     let params: NavigationExtras = {
       queryParams:{
         prod_cat: this.prodct_cat,
-        
+        categoriaUID: name
       }
     }
     this.router.navigate(['product-x-cat'], params);
+  }
+
+  showProduct(){
+    this.router.navigate(["product-detail"]);
   }
 
 }

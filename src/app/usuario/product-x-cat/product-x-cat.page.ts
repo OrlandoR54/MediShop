@@ -12,6 +12,8 @@ import { Product } from 'src/app/modelo/product';
 export class ProductXCatPage implements OnInit {
 
   producto: Product = new Product();
+  productos: any;
+  categoriaUID: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,17 +24,22 @@ export class ProductXCatPage implements OnInit {
     private productService: ProductService
   ) { 
     route.queryParams.subscribe(params =>{
-      console.log("PARAMETROS USER-MAIN: ", params);
-      this.producto = new Product();
-      //this.contacto = params.contacto;
+      console.log("PARAMETROS PRODUCT x CAT: ", params);
+      //this.producto = new Product();
+      this.categoriaUID = params.categoriaUID;
       if (this.router.getCurrentNavigation().extras.queryParams) {
-        this.producto = this.router.getCurrentNavigation().extras.queryParams.prod_cat;
-        console.log("Product  _Cat: ", this.producto);
+        this.productos = this.router.getCurrentNavigation().extras.queryParams.prod_cat;
+    
+        console.log("Product  _Cat: ", this.productos);
       }
     })
   }
 
   ngOnInit() {
+  }
+
+  back(){
+    this.router.navigate(['user-main'])
   }
 
 }

@@ -72,11 +72,13 @@ ion-slides {
     transition: .5s;
   }
 
+  //Contenedor de ION CARD
   .content-main {
     display: block;
     position: relative;
-    max-width: 9em;
+    max-width: 7em;
     height: 200px;
+    box-shadow: #cccccc;
   }
 
   div {
@@ -84,15 +86,27 @@ ion-slides {
       --background: #e8f3f3;
       width: 100%;
       height: 100%;
-      box-shadow: #cccccc;
     }
   }
 
-.user-total {
+  .btn-icon {
+    height:100px;
+  }
+
+.user-image {
   max-width:100%;
   height:100px;
-  margin: 8px 20px;
+  //margin: 8px 20px;
  // margin-right: 38px;
+}
+
+ion-card-header {
+  padding-top: 8px;
+}
+
+ion-card-title {
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .padre{

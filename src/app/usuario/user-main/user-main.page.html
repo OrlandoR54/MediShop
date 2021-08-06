@@ -21,14 +21,19 @@
   <ion-row class="sticky-row">
     <ion-col size="12" class="ion-padding-start"
     [ngClass]="{'location-visible': showLocationDetail}">
-      <ion-searchbar placeholder="Proteinas, vitaminas o medicinas"></ion-searchbar>
+      <ion-searchbar 
+        placeholder="Proteinas, vitaminas o medicinas" 
+        [(ngModel)] = "searchTerm" 
+        showCancelButton="focus" 
+        animated>
+      </ion-searchbar>
     </ion-col>
   </ion-row>
  
 
   <!-- SLIDER DE CATEGORIAS -->
   <ion-slides [options]="catSlideOpts">
-    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async" (click)= "showCategory(cat.uid)">
+    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async | filter:searchTerm" (click)= "showCategory(cat.uid, cat.name)">
      
         <div class="padre">
           <img class="photo-cat" src= {{cat.photoURL}}>  
@@ -48,21 +53,20 @@
     </ion-slide>
   </ion-slides>
  
+  <!-- CATEGORIA PROTEINAS -->
   <div class="content-seg">
-  
-      <ion-text color="dark"><b>Categoria</b></ion-text>
+      <ion-text color="dark"><b>Proteinas</b></ion-text>
 
-      <ion-button shape="round" fill="clear">Ver más<ion-icon slot="end" name="chevron-forward-outline" ></ion-icon></ion-button>
-    
+      <ion-button (click)= " showCategory(proteinUID, 'Proteina')" shape="round" fill="clear">Ver más<ion-icon slot="end" name="chevron-forward-outline" ></ion-icon></ion-button>
   </div>
 
     <ion-slides [options]="prodSlideOpts">
-      <ion-slide *ngFor="let p of productos | async">
-        <!-- Card USUARIOS-->
+      <ion-slide *ngFor="let p of proteinas | async">
+        <!-- Card PRODUCTO -->
         <div class="content-main">
-          <ion-card>
+          <ion-card (click)= "showProduct()">
             <div class="btn-icon">
-              <img class="user-total" src= {{p.photoURL}} />
+              <img class="user-image" src= {{p.image}} />
             </div>
           <div class="content-title">
             <ion-card-header>
@@ -74,6 +78,35 @@
         </div>
       </ion-slide>
     </ion-slides>
+
+
+     <!-- CATEGORIA NUTRICION -->
+  <div class="content-seg">
+  
+    <ion-text color="dark"><b>Nutrición</b></ion-text>
+
+    <ion-button (click)= " showCategory(nutricionUID, 'Nutricion')" shape="round" fill="clear">Ver más<ion-icon slot="end" name="chevron-forward-outline" ></ion-icon></ion-button>
+  
+</div>
+
+  <ion-slides [options]="prodSlideOpts">
+    <ion-slide *ngFor="let n of nutricion | async">
+      <!-- Card PRODUCTO -->
+      <div class="content-main">
+        <ion-card (click)= "showProduct()">
+          <div class="btn-icon">
+            <img class="user-image" src= {{n.image}} />
+          </div>
+        <div class="content-title">
+          <ion-card-header>
+            <ion-card-title>{{n.displayName}}</ion-card-title>
+            <ion-card-subtitle color="dark"><b>${{n.price}}</b></ion-card-subtitle>
+          </ion-card-header>
+        </div>
+        </ion-card>
+      </div>
+    </ion-slide>
+  </ion-slides>
  
   <!--
   <ion-text color="dark"><b style="padding-left: 10px;">Featured</b></ion-text>
