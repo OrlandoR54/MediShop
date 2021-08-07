@@ -33,7 +33,7 @@
 
   <!-- SLIDER DE CATEGORIAS -->
   <ion-slides [options]="catSlideOpts">
-    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async | filter:searchTerm" (click)= "showCategory(cat.uid, cat.name)">
+    <ion-slide ngClass="slide-Cat" *ngFor="let cat of categories | async" (click)= "showCategory(cat.uid, cat.name)">
      
         <div class="padre">
           <img class="photo-cat" src= {{cat.photoURL}}>  
@@ -61,7 +61,7 @@
   </div>
 
     <ion-slides [options]="prodSlideOpts">
-      <ion-slide *ngFor="let p of proteinas | async">
+      <ion-slide *ngFor="let p of proteinas | async | filter:searchTerm">
         <!-- Card PRODUCTO -->
         <div class="content-main">
           <ion-card (click)= "showProduct()">
@@ -90,7 +90,7 @@
 </div>
 
   <ion-slides [options]="prodSlideOpts">
-    <ion-slide *ngFor="let n of nutricion | async">
+    <ion-slide *ngFor="let n of nutricion | async | filter:searchTerm">
       <!-- Card PRODUCTO -->
       <div class="content-main">
         <ion-card (click)= "showProduct()">

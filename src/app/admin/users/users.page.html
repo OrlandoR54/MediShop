@@ -12,7 +12,12 @@
   <ion-list>
     <ion-list-header>
       Todos los usuarios
-      <!--<ion-searchbar [animated]="true" placeholder="Buscar" autocorrect autocomplete (ionInput)="onSearch(usuarios.displayName)"></ion-searchbar>-->
+      <ion-searchbar 
+        placeholder="usuario, mail, telefono" 
+        [(ngModel)] = "searchTerm" 
+        showCancelButton="focus" 
+        animated>
+      </ion-searchbar>
     </ion-list-header>
     <ion-grid>
       <ion-row class="ion-align-items-center">
@@ -46,7 +51,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div *ngFor="let u of usuarios | async">
+    <div *ngFor="let u of usuarios | async | filter: searchTerm">
       <ion-item> 
         <ion-avatar slot="start">
           <img src={{u.photoURL}}>

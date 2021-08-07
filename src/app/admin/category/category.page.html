@@ -11,6 +11,12 @@
   <ion-list>
     <ion-list-header>
       Añadir, Actualizar Categorias
+      <ion-searchbar 
+      placeholder="producto, descripcion, precio" 
+      [(ngModel)] = "searchTerm" 
+      showCancelButton="focus" 
+      animated>
+    </ion-searchbar>
     </ion-list-header>
     <ion-grid>
       <ion-row>
@@ -38,7 +44,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div *ngFor="let c of categorias | async">
+    <div *ngFor="let c of categorias | async | filter: searchTerm">
       <ion-item (click)="editar(c)"> 
         <ion-avatar slot="start">
           <img src={{c.photoURL}}>

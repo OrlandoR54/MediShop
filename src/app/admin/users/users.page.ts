@@ -10,6 +10,7 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class UsersPage implements OnInit {
 
+  searchTerm: string;
   usuarios: any;
 
   constructor(
@@ -43,9 +44,5 @@ export class UsersPage implements OnInit {
     this.menu.open("admin-menu");
   }
 
-  onSearch(name:any){
-    this.usuarios = this.usersService.getSearch(name);
-    console.log(this.usuarios);
-  }
 
 }

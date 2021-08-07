@@ -12,6 +12,8 @@ import { forkJoin } from 'rxjs';
 export class CategoryPage implements OnInit {
 
   @ViewChild('catProduct') inputCatProducto: ElementRef;
+
+  searchTerm : string;
   categorias: any;
   
   array = [];

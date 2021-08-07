@@ -10,6 +10,7 @@ import { AlertController, MenuController } from '@ionic/angular';
 })
 export class ProductPage implements OnInit {
 
+  searchTerm: string;
   productos: any;
 
   constructor(
