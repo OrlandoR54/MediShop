@@ -11,7 +11,7 @@
 
 <ion-content>
   <div class="content-main" *ngFor="let p of productos | async">
-    <ion-card>
+    <ion-card (click)= "showProduct(p.uid)">
       <div class="btn-icon">
         <img class="user-image" src= {{p.image}} />
       </div>

@@ -1,6 +1,6 @@
 import { ProductService } from './../../services/product.service';
 import { MenuController } from '@ionic/angular';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/modelo/product';
 
@@ -14,6 +14,7 @@ export class ProductXCatPage implements OnInit {
   producto: Product = new Product();
   productos: any;
   categoriaUID: any;
+  productDetail: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,17 @@ export class ProductXCatPage implements OnInit {
 
   back(){
     this.router.navigate(['user-main'])
+  }
+
+  showProduct(uid: string){
+    console.log("UID-PRoducto: ", uid)
+    this.productDetail = this.productService.getProduct(uid);
+    let params: NavigationExtras = {
+      queryParams:{
+        productDetalle: this.productDetail
+      }
+    }
+    this.router.navigate(["product-detail"], params);
   }
 
 }

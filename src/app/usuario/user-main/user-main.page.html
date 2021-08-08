@@ -64,7 +64,7 @@
       <ion-slide *ngFor="let p of proteinas | async | filter:searchTerm">
         <!-- Card PRODUCTO -->
         <div class="content-main">
-          <ion-card (click)= "showProduct()">
+          <ion-card (click)= "showProduct(p.uid)">
             <div class="btn-icon">
               <img class="user-image" src= {{p.image}} />
             </div>
@@ -93,7 +93,7 @@
     <ion-slide *ngFor="let n of nutricion | async | filter:searchTerm">
       <!-- Card PRODUCTO -->
       <div class="content-main">
-        <ion-card (click)= "showProduct()">
+        <ion-card (click)= "showProduct(n.uid)">
           <div class="btn-icon">
             <img class="user-image" src= {{n.image}} />
           </div>

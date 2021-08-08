@@ -58,10 +58,11 @@ export class UserMainPage implements OnInit {
   
 
   user: any;
-  productos: any;
-  categories: any;
-  proteinas: any;
-  nutricion: any;
+  productDetail: any;
+  productos: any;   // Todos los productos
+  categories: any;  // Todas las categorias
+  proteinas: any;   // Todos los productos de la categoria proteina
+  nutricion: any;   // Todos los productos de la categoria nutricion
 
   constructor(
     private route: ActivatedRoute,
@@ -142,8 +143,15 @@ export class UserMainPage implements OnInit {
     this.router.navigate(['product-x-cat'], params);
   }
 
-  showProduct(){
-    this.router.navigate(["product-detail"]);
+  showProduct(uid: string){
+    console.log("UID-PRoducto: ", uid)
+    this.productDetail = this.productService.getProduct(uid);
+    let params: NavigationExtras = {
+      queryParams:{
+        productDetalle: this.productDetail
+      }
+    }
+    this.router.navigate(["product-detail"], params);
   }
 
 }

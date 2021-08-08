@@ -1,21 +1,75 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="content-main">
-    <ion-card>
-   <!--   <div class="btn-icon">
+
+  <!-- Segmento Producto -->
+  <div class="content-main-product">
+    <ion-card class="card-producto" *ngFor="let p of product | async">
+      <div class="btn-icon">
         <img class="user-image" src= {{p.image}} />
       </div>
     <div class="content-title">
       <ion-card-header>
-        <ion-card-title>{{p.displayName}}</ion-card-title>
-        <ion-card-subtitle color="dark"><b>${{p.price}}</b></ion-card-subtitle>
+        <ion-card-title>"{{p.displayName}}"</ion-card-title>
       </ion-card-header>
-    </div> -->
+    </div>
+    <ion-card-content>
+      {{p.description}}
+      <ion-card-subtitle color="dark"><br><b>${{p.price}}</b></ion-card-subtitle>
+    </ion-card-content>
+    
     </ion-card>
   </div>
+
+
+
+
+  <!-- Segmento Unidades -->
+  <div class="content-main">
+    <ion-card *ngFor="let p of product | async">
+      
+    <div class="content-title">
+      <ion-card-header>
+        <div class="content-title-unidades">
+          <ion-card-title>Unidades</ion-card-title>
+        </div>
+        <div class="content-bottons-unidades">
+          <ion-icon name="remove-circle-outline"></ion-icon>
+          <ion-input type="numeric"></ion-input>
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </div>
+      </ion-card-header>
+    </div>
+    </ion-card>
+  </div>
+
+
+  <!-- Segmento Comentario -->
+  <div class="content-main">
+    <ion-card *ngFor="let p of product | async">
+      
+    <div class="content-title">
+      <ion-card-header>
+        <ion-card-title>¿Quiere aclarar algo?</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-textarea placeholder="Ingrese uns nota..."></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </div>
+    </ion-card>
+  </div>
+
+
+  <div class="content-btn-agregar"> 
+    <ion-button shape="round">Agregar al carrito</ion-button>
+  </div>
+
 </ion-content>

@@ -42,21 +42,31 @@ export class ProductService {
       .set(Object.assign({}, category), { merge: true });
   }
 
+  /** Obtiene el producto activo por UID **/
+  getProduct(uid: string): Observable<any[]> {
+    return this.afs.collection("products", 
+    ref => ref.where("uid", "==", uid)).valueChanges();
+  }
+
+  /** Obtiene todos los productos **/
   getProductos(): Observable<any[]> {
     return this.afs.collection("products").valueChanges();
   }
 
+  /** Obtiene todos los productos que esten activos**/
   getProductActive(): Observable<any[]> {
     return this.afs.collection("products", 
     ref => ref.where("deleted" , "==", false)).valueChanges();
   }
 
+  /** Obtiene todos los productos por categorias y esten activos **/
   getProdCat(categoryUID:string): Observable<any[]> {
     return this.afs.collection("products", 
     ref => ref.where("categoryUID" , "==", categoryUID)
               .where("deleted" , "==", false)).valueChanges();
   }
 
+  /** Obtiene todas las categorias por UID **/
   getCategoriesUID(uid:string): Observable<any[]> {
     return this.afs.collection("category", 
     ref => ref.where("uid" , "==", uid)).valueChanges();
