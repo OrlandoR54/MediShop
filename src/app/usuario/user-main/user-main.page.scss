@@ -4,15 +4,28 @@
 }
 
 .gfg {
-    width:200px;
+    width:150px;
     text-align:center;
     padding:9px;
     height: 100%;
     object-fit: contain;
 }
 
-ion-menu-button {
-    color: black;
+ion-title {
+  width: 210px;
+  text-align: center;
+}
+
+.content-icon {
+  display: block;
+}
+
+ion-icon {
+  float: right;
+  --ionicon-stroke-width: 25px;
+  size: 25px;
+  margin: 10px;
+  vertical-align: top
 }
 
 ///////

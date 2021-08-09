@@ -68,8 +68,8 @@
   </div>
 
 
-  <div class="content-btn-agregar"> 
-    <ion-button shape="round">Agregar al carrito</ion-button>
+  <div class="content-btn-agregar" *ngFor="let p of product | async"> 
+    <ion-button shape="round" (click) = "agregar(p)">Agregar al carrito</ion-button>
   </div>
 
 </ion-content>

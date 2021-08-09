@@ -154,4 +154,8 @@ export class UserMainPage implements OnInit {
     this.router.navigate(["product-detail"], params);
   }
 
+  navCarrito() {
+    this.router.navigate(["carrito"]);
+  }
+
 }
